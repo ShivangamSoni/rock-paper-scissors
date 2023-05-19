@@ -18,6 +18,9 @@ export default {
         lizard: 'linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%))',
         spock: 'linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%))',
       },
+      fontFamily: {
+        primary: "'Barlow Semi Condensed', sans-serif",
+      },
     },
   },
   plugins: [],
