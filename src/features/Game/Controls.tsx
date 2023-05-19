@@ -4,7 +4,7 @@ export default function Controls() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="relative">
-        <img src="/public/assets/bg/bg-triangle.svg" alt="" />
+        <img src="/assets/bg/bg-triangle.svg" alt="" />
         <ControlButton
           variant="paper"
           className="absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2"
