@@ -8,6 +8,7 @@ export default {
           dark: 'hsl(229, 25%, 31%)',
           score: 'hsl(229, 64%, 46%)',
           outline: 'hsl(217, 16%, 45%)',
+          button: 'hsl(349, 71%, 52%)',
         },
       },
       backgroundImage: {
