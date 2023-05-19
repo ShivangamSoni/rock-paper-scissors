@@ -27,6 +27,9 @@
       ],
       "@components/*": [
         "src/components/*"
+      ],
+      "@Game/*": [
+        "src/features/Game/*"
       ]
     }
   },
