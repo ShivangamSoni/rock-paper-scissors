@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     ViteAliases({
       createGlobalAlias: false,
+      dir: 'src',
     }),
   ],
 });
