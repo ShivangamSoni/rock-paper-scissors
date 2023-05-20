@@ -30,6 +30,18 @@
       ],
       "@Game/*": [
         "src/features/Game/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@customTypes/*": [
+        "src/customTypes/*"
+      ],
+      "@data/*": [
+        "src/data/*"
+      ],
+      "@util/*": [
+        "src/util/*"
       ]
     }
   },
