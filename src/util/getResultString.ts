@@ -2,7 +2,7 @@ import { Result } from '@customTypes/Game';
 
 const RESULTS: { [key in Result]: string } = {
   win: 'You Win',
-  lose: 'Computer Win',
+  lose: 'You Lose',
   tie: 'Tie',
 };
 
