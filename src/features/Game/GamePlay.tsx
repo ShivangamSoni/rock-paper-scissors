@@ -1,24 +1,40 @@
 import ControlButton from '@components/ControlButton';
 
+import { Choice, Result } from '@customTypes/Game';
+import { CONTROLS } from '@data/Controls';
+import { getResultString } from '@util/getResultString';
+
 export default function GamePlay({
   computerPicking,
   calculatingResult,
   result,
+  playerChoice,
+  computerChoice,
+  onPlayAgain,
 }: {
   computerPicking: boolean;
   calculatingResult: boolean;
-  result: string;
+  playerChoice: Choice;
+  computerChoice: Choice | null;
+  result: Result | null;
+  onPlayAgain: () => void;
 }) {
+  const playerControl = CONTROLS.find(({ value }) => value === playerChoice);
+  const computerControl = CONTROLS.find(
+    ({ value }) => value === computerChoice,
+  );
   return (
     <div
       className={`grid grid-cols-[auto_auto_auto] content-center justify-center space-x-24`}
     >
       <div className="flex flex-col items-center justify-between gap-12">
         <span className="uppercase">You Picked</span>
-        <ControlButton variant="rock" disabled>
-          <span className="sr-only">Rock</span>
-          <img src="/assets/icon/icon-rock.svg" alt="" />
-        </ControlButton>
+        {playerControl && (
+          <ControlButton variant={playerControl.variant} disabled>
+            <span className="sr-only">{playerControl.value}</span>
+            <img src={playerControl.image} alt="" />
+          </ControlButton>
+        )}
       </div>
 
       <div className="flex flex-col items-center justify-between gap-12">
@@ -30,10 +46,12 @@ export default function GamePlay({
             The Computer is Picking
           </div>
         ) : (
-          <ControlButton variant="rock" disabled>
-            <span className="sr-only">Rock</span>
-            <img src="/assets/icon/icon-rock.svg" alt="" />
-          </ControlButton>
+          computerControl && (
+            <ControlButton variant={computerControl.variant} disabled>
+              <span className="sr-only">{computerControl.value}</span>
+              <img src={computerControl.image} alt="" />
+            </ControlButton>
+          )
         )}
       </div>
 
@@ -45,8 +63,13 @@ export default function GamePlay({
         ) : (
           result && (
             <div className="flex flex-col justify-center gap-4">
-              <span className="uppercase font-bold text-7xl">{result}</span>
-              <button className="outline-none border-none bg-white text-neutral-button text-lg py-2 rounded-md transition-colors hover:text-white hover:bg-neutral-button focus-visible:text-white focus-visible:bg-neutral-button">
+              <span className="uppercase font-bold text-7xl">
+                {getResultString(result)}
+              </span>
+              <button
+                onClick={onPlayAgain}
+                className="outline-none border-none bg-white text-neutral-button text-lg py-2 rounded-md transition-colors hover:text-white hover:bg-neutral-button focus-visible:text-white focus-visible:bg-neutral-button"
+              >
                 Play Again
               </button>
             </div>

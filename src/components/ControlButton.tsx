@@ -1,15 +1,16 @@
+import { Choice } from '@customTypes/Game';
 import { ComponentProps } from 'react';
 
 interface Props extends ComponentProps<'button'> {
-  variant: keyof typeof BG;
+  variant: Choice;
   highlight?: boolean;
 }
 
-const BG = {
+const BG: { [key in Choice]: string } = {
   rock: 'before:bg-rock',
   paper: 'before:bg-paper',
   scissors: 'before:bg-scissors',
-} as const;
+};
 
 export default function ControlButton({
   variant,
