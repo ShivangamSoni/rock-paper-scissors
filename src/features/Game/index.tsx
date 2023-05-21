@@ -1,16 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 
-import { scoreAtom } from '@store/index';
+import { gameModeAtom, scoreAtom } from '@store/index';
 import { Choice, Result } from '@customTypes/Game';
 import { getResult } from '@util/getResult';
+import { CHOICES } from '@data/Choices';
 
 import Controls from './Controls';
 import GamePlay from './GamePlay';
-import { CHOICES } from '@data/Choices';
 
 export default function Game() {
+  const [gameMode] = useAtom(gameModeAtom);
   const [_, setScore] = useAtom(scoreAtom);
+
   const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
   const [computerChoice, setComputerChoice] = useState<Choice | null>(null);
   const [result, setResult] = useState<Result | null>(null);
@@ -19,7 +21,7 @@ export default function Game() {
 
   const calculateResult = useCallback(() => {
     if (playerChoice && computerChoice) {
-      const result = getResult(playerChoice, computerChoice);
+      const result = getResult(gameMode!, playerChoice, computerChoice);
       setResult(result);
       setCalculatingResult(false);
       if (result === 'win') {
@@ -28,7 +30,7 @@ export default function Game() {
         setScore((prev) => prev - 1);
       }
     }
-  }, [computerChoice, playerChoice, setScore]);
+  }, [computerChoice, gameMode, playerChoice, setScore]);
 
   const playAgain = () => {
     setPlayerChoice(null);
@@ -65,7 +67,7 @@ export default function Game() {
   }, [calculateResult, calculatingResult]);
 
   return (
-    <main className="grid">
+    <div className="grid">
       {playerChoice === null ? (
         <Controls setChoice={setPlayerChoice} />
       ) : (
@@ -78,6 +80,6 @@ export default function Game() {
           onPlayAgain={playAgain}
         />
       )}
-    </main>
+    </div>
   );
 }

@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { useAtom } from 'jotai';
+
+import { gameModeAtom } from '@store/index';
 
 import Rules from './Rules';
 
 export default function Footer() {
+  const [gameMode] = useAtom(gameModeAtom);
   const [showModal, setShowModal] = useState(false);
+
+  if (!gameMode) return null;
 
   return (
     <>

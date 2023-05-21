@@ -10,6 +10,8 @@ const BG: { [key in Choice]: string } = {
   rock: 'before:bg-rock',
   paper: 'before:bg-paper',
   scissors: 'before:bg-scissors',
+  lizard: 'before:bg-lizard',
+  spock: 'before:bg-spock',
 };
 
 export default function ControlButton({

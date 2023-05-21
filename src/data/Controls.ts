@@ -20,4 +20,14 @@ export const CONTROLS: {
     value: 'scissors',
     image: '/assets/icon/icon-scissors.svg',
   },
+  {
+    variant: 'lizard',
+    value: 'lizard',
+    image: '/assets/icon/icon-lizard.svg',
+  },
+  {
+    variant: 'spock',
+    value: 'spock',
+    image: '/assets/icon/icon-spock.svg',
+  },
 ];

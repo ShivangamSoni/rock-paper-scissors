@@ -1,8 +1,12 @@
-import ControlButton from '@components/ControlButton';
-
 import { Choice, Result } from '@customTypes/Game';
+
 import { CONTROLS } from '@data/Controls';
 import { getResultString } from '@util/getResultString';
+
+import ControlButton from '@components/ControlButton';
+import Button from '@components/Button';
+import { useAtom } from 'jotai';
+import { gameModeAtom } from '@store/index';
 
 export default function GamePlay({
   computerPicking,
@@ -19,6 +23,7 @@ export default function GamePlay({
   result: Result | null;
   onPlayAgain: () => void;
 }) {
+  const [_, setGameMode] = useAtom(gameModeAtom);
   const playerControl = CONTROLS.find(({ value }) => value === playerChoice);
   const computerControl = CONTROLS.find(
     ({ value }) => value === computerChoice,
@@ -66,12 +71,10 @@ export default function GamePlay({
               <span className="uppercase font-bold text-7xl">
                 {getResultString(result)}
               </span>
-              <button
-                onClick={onPlayAgain}
-                className="outline-none border-none bg-white text-neutral-button text-lg py-2 rounded-md transition-colors hover:text-white hover:bg-neutral-button focus-visible:text-white focus-visible:bg-neutral-button"
-              >
-                Play Again
-              </button>
+              <Button onClick={onPlayAgain}>Play Again</Button>
+              <Button onClick={() => setGameMode(null)}>
+                Change Game Mode
+              </Button>
             </div>
           )
         )}
