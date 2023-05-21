@@ -1,4 +1,9 @@
+import { scoreAtom } from '@store/index';
+import { useAtom } from 'jotai';
+
 export default function Header() {
+  const [score] = useAtom(scoreAtom);
+
   return (
     <header className="flex justify-between outline outline-neutral-outline p-8 rounded-xl">
       <h1>
@@ -10,7 +15,7 @@ export default function Header() {
         <span className="uppercase tracking-widest text-sm text-neutral-score">
           Score
         </span>
-        <span className="text-6xl min-w-[2ch]">0</span>
+        <span className="text-6xl min-w-[2ch]">{score}</span>
       </div>
     </header>
   );
