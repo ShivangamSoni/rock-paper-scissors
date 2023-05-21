@@ -13,7 +13,7 @@ export default function Controls({
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative w-[min(100%,400px)] mt-12">
+      <div className="relative w-[65%] sm:w-[45%] lg:w-[400px] md:mt-12">
         <img
           className="w-full"
           src={
@@ -56,6 +56,7 @@ export default function Controls({
             <ControlButton
               onClick={() => setChoice('scissors')}
               variant="scissors"
+              size="sm"
               className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
             >
               <span className="sr-only">Scissor</span>
@@ -64,6 +65,7 @@ export default function Controls({
             <ControlButton
               onClick={() => setChoice('spock')}
               variant="spock"
+              size="sm"
               className="absolute left-0 top-1/4 -translate-x-1/2"
             >
               <span className="sr-only">Spock</span>
@@ -72,6 +74,7 @@ export default function Controls({
             <ControlButton
               onClick={() => setChoice('paper')}
               variant="paper"
+              size="sm"
               className="absolute right-0 top-1/4 translate-x-1/2"
             >
               <span className="sr-only">Paper</span>
@@ -80,6 +83,7 @@ export default function Controls({
             <ControlButton
               onClick={() => setChoice('lizard')}
               variant="lizard"
+              size="sm"
               className="absolute bottom-0 left-[10%] -translate-x-1/2 translate-y-1/2"
             >
               <span className="sr-only">Lizard</span>
@@ -88,6 +92,7 @@ export default function Controls({
             <ControlButton
               onClick={() => setChoice('rock')}
               variant="rock"
+              size="sm"
               className="absolute bottom-0 right-[10%] translate-x-1/2 translate-y-1/2"
             >
               <span className="sr-only">Rock</span>

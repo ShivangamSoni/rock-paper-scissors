@@ -30,21 +30,25 @@ export default function GamePlay({
   );
   return (
     <div
-      className={`grid grid-cols-[auto_auto_auto] content-center justify-center space-x-24`}
+      className={`grid grid-cols-2 grid-rows-[auto_auto] gap-y-16 md:gap-y-0 md:grid-cols-[auto_auto_auto] md:grid-rows-1 content-center justify-center md:space-x-24`}
     >
-      <div className="flex flex-col items-center justify-between gap-12">
-        <span className="uppercase">You Picked</span>
+      <div className="flex flex-col items-center justify-between md:justify-center gap-8 md:gap-12">
+        <span className="uppercase order-last md:order-first">You Picked</span>
         {playerControl && (
-          <ControlButton variant={playerControl.variant} disabled>
+          <ControlButton
+            variant={playerControl.variant}
+            disabled
+            highlight={result === 'win'}
+          >
             <span className="sr-only">{playerControl.value}</span>
             <img src={playerControl.image} alt="" />
           </ControlButton>
         )}
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-12">
-        <span className="uppercase">
-          {computerPicking ? '' : 'The Computer Picked'}
+      <div className="flex flex-col items-center justify-between md:justify-center gap-8 md:gap-12">
+        <span className="uppercase order-last md:order-first">
+          {!computerPicking && 'The Computer Picked'}
         </span>
         {computerPicking ? (
           <div className="w-36 h-36 bg-black bg-opacity-20 rounded-full animate-bounce flex items-center justify-center text-center">
@@ -52,7 +56,11 @@ export default function GamePlay({
           </div>
         ) : (
           computerControl && (
-            <ControlButton variant={computerControl.variant} disabled>
+            <ControlButton
+              variant={computerControl.variant}
+              disabled
+              highlight={result === 'lose'}
+            >
               <span className="sr-only">{computerControl.value}</span>
               <img src={computerControl.image} alt="" />
             </ControlButton>
@@ -60,15 +68,15 @@ export default function GamePlay({
         )}
       </div>
 
-      <div className="col-start-2 row-start-1 grid">
+      <div className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-1 grid">
         {calculatingResult ? (
           <div className="flex items-center justify-center animate-ping">
             Calculating Result
           </div>
         ) : (
           result && (
-            <div className="flex flex-col justify-center gap-4">
-              <span className="uppercase font-bold text-7xl">
+            <div className="flex flex-col items-center md:items-stretch justify-center gap-4">
+              <span className="uppercase font-bold text-5xl ms:text-7xl text-center">
                 {getResultString(result)}
               </span>
               <Button onClick={onPlayAgain}>Play Again</Button>

@@ -10,13 +10,15 @@ export default function ModeSelector() {
   return (
     <section className="flex items-center justify-center text-center">
       <div>
-        <h2 className="text-3xl uppercase tracking-wider">Select Game Mode</h2>
+        <h2 className="text-4xl md:text-6xl uppercase tracking-wider">
+          Select Game Mode
+        </h2>
 
         <div className="flex flex-col items-center justify-evenly gap-4 mt-6">
-          <Button onClick={() => setGameMode('basic')} className="text-sm">
+          <Button onClick={() => setGameMode('basic')}>
             Rock Paper Scissors
           </Button>
-          <Button onClick={() => setGameMode('special')} className="text-sm">
+          <Button onClick={() => setGameMode('special')}>
             Rock Paper Scissors Lizard Spock
           </Button>
         </div>

@@ -22,20 +22,23 @@ export default function Header() {
         />
       </Helmet>
 
-      <header className="flex justify-between outline outline-neutral-outline p-8 rounded-xl">
+      <header className="flex justify-between outline outline-neutral-outline p-4 sm:p-6 md:p-8 rounded-sm sm:rounded-xl">
         <h1>
           <span className="sr-only">{title}</span>
           <img
+            className="w-20 sm:w-auto"
             src={gameMode === 'special' ? '/logo-bonus.svg' : '/logo.svg'}
             alt=""
           />
         </h1>
 
-        <div className="flex items-center justify-center flex-col px-10 bg-white text-neutral-dark text-center rounded-lg">
-          <span className="uppercase tracking-widest text-sm text-neutral-score">
+        <div className="flex items-center justify-center flex-col px-5 sm:px-10 bg-white text-neutral-dark text-center rounded-sm sm:rounded-lg">
+          <span className="uppercase tracking-widest text-xs sm:text-sm text-neutral-score">
             Score
           </span>
-          <span className="text-6xl min-w-[2ch]">{score}</span>
+          <span className="text-3xl sm:text-4xl md:text-6xl min-w-[2ch]">
+            {score}
+          </span>
         </div>
       </header>
     </>
